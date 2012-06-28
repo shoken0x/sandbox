@@ -1,0 +1,4 @@
+all: hello_make
+
+hello_make:
+	echo Hello Make World!!
