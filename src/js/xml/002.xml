@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<EMPLOYEES>
+    <EMPLOYEE>
+      <EMPNO>50</EMPNO>
+      <ENAME>高橋敦子</ENAME>
+      <JOB>Director</JOB>
+      <MGR>1</MGR>
+      <HIREDATE>1991-04-01</HIREDATE>
+      <SAL>6000</SAL>
+      <DEPTNO>30</DEPTNO>
+    </EMPLOYEE>
+</EMPLOYEES>

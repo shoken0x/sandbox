@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<EMPLOYEES>
+    <EMPLOYEE>
+      <EMPNO>1401</EMPNO>
+      <ENAME>小山尚彦</ENAME>
+      <JOB>Analyst</JOB>
+      <MGR>50</MGR>
+      <HIREDATE>1999-09-01</HIREDATE>
+      <SAL>3000</SAL>
+      <DEPTNO>30</DEPTNO>
+    </EMPLOYEE>
+</EMPLOYEES>

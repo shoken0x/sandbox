@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<EMPLOYEES>
+    <EMPLOYEE>
+      <EMPNO>1</EMPNO>
+      <ENAME>佐野力</ENAME>
+      <JOB>President</JOB>
+      <HIREDATE>1990-04-01</HIREDATE>
+      <SAL>10000</SAL>
+      <DEPTNO>10</DEPTNO>
+    </EMPLOYEE>
+</EMPLOYEES>

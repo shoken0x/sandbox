@@ -1,0 +1,218 @@
+info it worked if it ends with ok
+verbose cli [ 'node',
+verbose cli   '/root/src/git/nvm/v0.6.18/bin/npm',
+verbose cli   'install',
+verbose cli   '-g',
+verbose cli   'libxmljs' ]
+info using npm@1.1.21
+info using node@v0.6.18
+verbose config file /root/.npmrc
+verbose config file /root/src/git/nvm/v0.6.18/etc/npmrc
+verbose config file /root/src/git/nvm/v0.6.18/lib/node_modules/npm/npmrc
+verbose cache add [ 'libxmljs', null ]
+silly cache add: name, spec, args [ undefined, 'libxmljs', [ 'libxmljs', null ] ]
+verbose parsed url { pathname: 'libxmljs', path: 'libxmljs', href: 'libxmljs' }
+verbose addNamed [ 'libxmljs', '' ]
+verbose addNamed [ null, '' ]
+silly name, range, hasData [ 'libxmljs', '', false ]
+verbose raw, before any munging libxmljs
+verbose url resolving [ 'https://registry.npmjs.org/', './libxmljs' ]
+verbose url resolved https://registry.npmjs.org/libxmljs
+verbose etag "BMVOO8FMFPZFYQQZ9WUXFEC66"
+http GET https://registry.npmjs.org/libxmljs
+http 304 https://registry.npmjs.org/libxmljs
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+silly get cb     etag: '"BMVOO8FMFPZFYQQZ9WUXFEC66"',
+silly get cb     date: 'Wed, 23 May 2012 09:35:29 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag libxmljs from cache
+silly name, range, hasData 2 [ 'libxmljs', '', true ]
+silly versions [ 'libxmljs',
+silly versions   [ '0.4.1',
+silly versions     '0.4.2',
+silly versions     '0.4.3',
+silly versions     '0.5.0',
+silly versions     '0.5.1',
+silly versions     '0.5.2',
+silly versions     '0.5.3',
+silly versions     '0.5.4' ] ]
+verbose bin dist [ '0.6-ares1.7.5-DEV-evundefined-openssl0.9.8e-fips-rhel5-v83.6.6.25-linux-x64-2.6.18-164.el5',
+verbose bin dist   { shasum: 'da7dde1db56f98b2cd0fddb0c77ec27a8f604a5c',
+verbose bin dist     tarball: 'http://registry.npmjs.org/libxmljs/-/libxmljs-0.5.4.tgz' } ]
+verbose has wscript [ undefined,
+verbose has wscript   { file: '/root/.npm/libxmljs/0.5.4/package/package.json',
+verbose has wscript     gypfile: false,
+verbose has wscript     contributors: false,
+verbose has wscript     serverjs: false,
+verbose has wscript     wscript: true } ]
+verbose caching /root/.npm/libxmljs/0.5.4/package/package.json
+verbose loadDefaults libxmljs@0.5.4
+silly resolved [ { name: 'libxmljs',
+silly resolved     author: { name: 'Marco Rogers - http://github.com/polotek' },
+silly resolved     contributors: [ { name: 'Jeff Smick' } ],
+silly resolved     description: 'libxml bindings for v8 javascript engine',
+silly resolved     version: '0.5.4',
+silly resolved     scripts: 
+silly resolved      { install: 'node-waf configure build',
+silly resolved        preuninstall: 'node-waf clean',
+silly resolved        test: 'node --expose_gc ./node_modules/nodeunit/bin/nodeunit test' },
+silly resolved     repository: { type: 'git', url: 'git://github.com/polotek/libxmljs.git' },
+silly resolved     bugs: { url: 'http://github.com/polotek/libxmljs/issues' },
+silly resolved     main: './index',
+silly resolved     engines: { node: '>=0.4.7' },
+silly resolved     devDependencies: { nodeunit: '*' },
+silly resolved     _id: 'libxmljs@0.5.4',
+silly resolved     dependencies: {},
+silly resolved     optionalDependencies: {},
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.21',
+silly resolved     _nodeVersion: 'v0.6.18',
+silly resolved     _defaultsLoaded: true,
+silly resolved     _from: 'libxmljs' } ]
+info into /root/src/git/nvm/v0.6.18/lib libxmljs@0.5.4
+info installOne libxmljs@0.5.4
+verbose from cache /root/.npm/libxmljs/0.5.4/package/package.json
+info unbuild /root/src/git/nvm/v0.6.18/lib/node_modules/libxmljs
+verbose unpack /root/.npm/libxmljs/0.5.4/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry README.md
+silly extracting entry LICENSE
+silly extracting entry index.js
+silly extracting entry Makefile
+silly extracting entry .travis.yml
+silly extracting entry lib/document.js
+silly extracting entry lib/element.js
+silly extracting entry lib/bindings.js
+silly extracting entry lib/sax_parser.js
+silly extracting entry wscript
+silly extracting entry docs/_Sidebar.md
+silly extracting entry docs/api/Parser.md
+silly extracting entry docs/api/Attribute.md
+silly extracting entry docs/api/SyntaxError.md
+silly extracting entry docs/api/Namespace.md
+silly extracting entry docs/api/SaxParser.md
+silly extracting entry docs/api/HtmlDocument.md
+silly extracting entry docs/api/SaxPushParser.md
+silly extracting entry docs/api/Element.md
+silly extracting entry docs/api/XmlDocument.md
+silly extracting entry docs/api/Libxmljs.md
+silly extracting entry docs/Home.md
+silly extracting entry test/document.js
+silly extracting entry test/html_parser.js
+silly extracting entry test/ref_integrity.js
+silly extracting entry test/text_node.js
+silly extracting entry test/attribute.js
+silly extracting entry test/element.js
+silly extracting entry test/traversal.js
+silly extracting entry test/namespace.js
+silly extracting entry test/node_attributes.js
+silly extracting entry test/main.js
+silly extracting entry test/searching.js
+silly extracting entry test/xml_parser.js
+silly extracting entry test/xml_sax_parser.js
+silly extracting entry test/fixtures/errors/comment.xml
+silly extracting entry test/fixtures/parser.html
+silly extracting entry test/fixtures/warnings/amp.html
+silly extracting entry test/fixtures/warnings/ent9.xml
+silly extracting entry test/fixtures/parser.xml
+silly extracting entry test/fixtures/sax_parser.xml
+silly extracting entry src/xml_element.cc
+silly extracting entry src/xml_node.cc
+silly extracting entry src/html_document.cc
+silly extracting entry src/xml_xpath_context.h
+silly extracting entry src/xml_node.h
+silly extracting entry src/xml_namespace.cc
+silly extracting entry src/libxmljs.cc
+silly extracting entry src/xml_document.h
+silly extracting entry src/html_document.h
+silly extracting entry src/xml_sax_parser.cc
+silly extracting entry src/libxmljs.h
+silly extracting entry src/xml_sax_parser.h
+silly extracting entry src/xml_attribute.cc
+silly extracting entry src/xml_syntax_error.cc
+silly extracting entry src/xml_element.h
+silly extracting entry src/xml_namespace.h
+silly extracting entry src/xml_syntax_error.h
+silly extracting entry src/xml_xpath_context.cc
+silly extracting entry src/xml_document.cc
+silly extracting entry src/xml_attribute.h
+verbose has wscript [ undefined,
+verbose has wscript   { file: '/root/src/git/nvm/v0.6.18/lib/node_modules/libxmljs/package.json',
+verbose has wscript     gypfile: false,
+verbose has wscript     contributors: false,
+verbose has wscript     serverjs: false,
+verbose has wscript     wscript: true } ]
+verbose caching /root/src/git/nvm/v0.6.18/lib/node_modules/libxmljs/package.json
+verbose loadDefaults libxmljs@0.5.4
+info preinstall libxmljs@0.5.4
+verbose from cache /root/src/git/nvm/v0.6.18/lib/node_modules/libxmljs/package.json
+verbose readDependencies: using package.json deps
+verbose from cache /root/src/git/nvm/v0.6.18/lib/node_modules/libxmljs/package.json
+verbose readDependencies: using package.json deps
+silly resolved []
+verbose about to build /root/src/git/nvm/v0.6.18/lib/node_modules/libxmljs
+info build /root/src/git/nvm/v0.6.18/lib/node_modules/libxmljs
+verbose from cache /root/src/git/nvm/v0.6.18/lib/node_modules/libxmljs/package.json
+verbose linkStuff [ true,
+verbose linkStuff   '/root/src/git/nvm/v0.6.18/lib/node_modules',
+verbose linkStuff   true,
+verbose linkStuff   '/root/src/git/nvm/v0.6.18/lib/node_modules' ]
+info linkStuff libxmljs@0.5.4
+verbose linkBins libxmljs@0.5.4
+verbose linkMans libxmljs@0.5.4
+verbose rebuildBundles libxmljs@0.5.4
+info install libxmljs@0.5.4
+verbose unsafe-perm in lifecycle false
+verbose Setting uid from 0 nobody
+verbose stack at uid setting Error
+verbose stack at uid setting     at exec (/root/src/git/nvm/v0.6.18/lib/node_modules/npm/lib/utils/exec.js:35:17)
+verbose stack at uid setting     at Array.0 (/root/src/git/nvm/v0.6.18/lib/node_modules/npm/lib/utils/lifecycle.js:146:5)
+verbose stack at uid setting     at EventEmitter._tickCallback (node.js:190:38)
+silly exec sh "-c" "node-waf configure build"
+silly spawning [ 'sh',
+silly spawning   [ '-c', 'node-waf configure build' ],
+silly spawning   '/root/src/git/nvm/v0.6.18/lib/node_modules/libxmljs' ]
+info libxmljs@0.5.4 Failed to exec install script
+info unbuild /root/src/git/nvm/v0.6.18/lib/node_modules/libxmljs
+verbose from cache /root/src/git/nvm/v0.6.18/lib/node_modules/libxmljs/package.json
+info preuninstall libxmljs@0.5.4
+verbose unsafe-perm in lifecycle false
+verbose Setting uid from 0 nobody
+verbose stack at uid setting Error
+verbose stack at uid setting     at exec (/root/src/git/nvm/v0.6.18/lib/node_modules/npm/lib/utils/exec.js:35:17)
+verbose stack at uid setting     at Array.0 (/root/src/git/nvm/v0.6.18/lib/node_modules/npm/lib/utils/lifecycle.js:146:5)
+verbose stack at uid setting     at EventEmitter._tickCallback (node.js:190:38)
+silly exec sh "-c" "node-waf clean"
+silly spawning [ 'sh',
+silly spawning   [ '-c', 'node-waf clean' ],
+silly spawning   '/root/src/git/nvm/v0.6.18/lib/node_modules/libxmljs' ]
+info uninstall libxmljs@0.5.4
+verbose unbuild libxmljs@0.5.4 [ true,
+verbose unbuild libxmljs@0.5.4   '/root/src/git/nvm/v0.6.18/lib/node_modules',
+verbose unbuild libxmljs@0.5.4   '/root/src/git/nvm/v0.6.18/lib/node_modules' ]
+info postuninstall libxmljs@0.5.4
+ERR! libxmljs@0.5.4 install: `node-waf configure build`
+ERR! `sh "-c" "node-waf configure build"` failed with 1
+ERR! 
+ERR! Failed at the libxmljs@0.5.4 install script.
+ERR! This is most likely a problem with the libxmljs package,
+ERR! not with npm itself.
+ERR! Tell the author that this fails on your system:
+ERR!     node-waf configure build
+ERR! You can get their info via:
+ERR!     npm owner ls libxmljs
+ERR! There is likely additional logging output above.
+ERR! 
+ERR! System Linux 2.6.18-164.el5
+ERR! command "node" "/root/src/git/nvm/v0.6.18/bin/npm" "install" "-g" "libxmljs"
+ERR! cwd /root/src/js
+ERR! node -v v0.6.18
+ERR! npm -v 1.1.21
+ERR! code ELIFECYCLE
+ERR! message libxmljs@0.5.4 install: `node-waf configure build`
+ERR! message `sh "-c" "node-waf configure build"` failed with 1
+ERR! errno {}
+verbose exit [ 1, true ]
