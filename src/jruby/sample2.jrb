@@ -1,0 +1,28 @@
+#!/opt/local/bin/jruby
+include Java
+include_class 'biz.fedc.wnw.FukidashiMaker'
+import java.io.BufferedOutputStream
+import java.io.ByteArrayOutputStream
+import java.awt.Graphics
+import javax.imageio.ImageIO
+
+java.lang.System.out.println("start")
+
+fileName = 'neko.jpeg'
+image = FukidashiMaker.getFukidashiImage(fileName);
+
+bos = ByteArrayOutputStream.new()
+os = BufferedOutputStream.new(bos)
+g = image.getGraphics()
+
+ImageIO.write(image,"png", os)
+os.flush()
+
+result = bos.toByteArray()
+
+p result
+result.each_with_index do |row,i|
+    p row
+end
+
+java.lang.System.out.println("end")

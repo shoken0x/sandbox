@@ -1,0 +1,34 @@
+#!/opt/local/bin/jruby
+include Java
+import java.awt.image.BufferedImage
+import java.awt.Graphics
+import java.awt.Color
+import java.awt.geom
+import java.io.FileInputStream
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import javax.imageio.ImageIO
+
+java.lang.System.out.println("start")
+
+openFileName = 'neko.jpeg'
+img = ImageIO.read(FileInputStream.new(openFileName));
+#img = FileInputStream.new(openFileName), 'UTF-8'))
+#img = BufferedReader.new(InputStreamReader.new(FileInputStream.new(openFileName), 'UTF-8'))
+
+g = img.getGraphics()
+g2 = (Graphics2D)g
+g.setColor(Color::BLACK)     
+#g.fillRect(10, 10, 100, 100);
+g.draw(RoundRectangle2D.Double.new(30.0d, 70.0d, 100.0d, 60.0d, 3.0d, 3.0d))
+g.fill(RoundRectangle2D.Double.new(50.0d, 50.0d, 170.0d, 90.0d, 3.0d, 3.0d))
+g.dispose()
+ImageIO.write(img, "PNG", java.io.File.new("sample.jpeg")) 
+#bimg1 = BufferedImage.new(400, 400, BufferedImage::TYPE_INT_ARGB)
+#bg1 = bimg1.getGraphics()
+#bg2 = image.getGraphics()
+#bg2.drawImage(image,100,100,nil)
+#ImageIO.write(image, "PNG", fis)
+#fis.close
+
+java.lang.System.out.println("end")
