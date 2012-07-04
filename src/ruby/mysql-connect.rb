@@ -1,5 +1,5 @@
 ##
-## gem install ruby-mysql 
+## gem install ruby-mysql
 ##
 require 'mysql'
 username = 'root'
@@ -13,8 +13,8 @@ stmt = db.prepare(sql)
 
 stmt.execute('localhost')
   
-puts "[Prepared Statement Results]"
-puts '|user  | host  |'
+puts sql
+puts '|user | host |'
 stmt.each do |rows|
-  puts rows.join ", " 
+  puts rows.join ", "
 end
