@@ -4,7 +4,7 @@
 require 'mongo'
 
 db_name='test'
-coll_name='insert-time' 
+coll_name='insert_time' 
 
 ## 接続処理
 db = Mongo::Connection.new.db(db_name)
