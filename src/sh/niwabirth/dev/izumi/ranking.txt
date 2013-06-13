@@ -1,0 +1,7 @@
+izumi 12 6732 0
+hoge 5 4970 0
+test 7 6666 1
+izumi 4 9381 0
+abc 13 1111 1
+izumi 6 565 0
+izumi 7 2978 0
