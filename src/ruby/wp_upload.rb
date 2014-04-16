@@ -1,21 +1,27 @@
+require 'dbox'
 require 'xmlrpc/client'
-@dbox_dir = '/tmp/fromMac/*'
-@host = 'example.com'
+@dbox_path = '/tmp/images/'
+@host = 'blog.kitchhike.com'
 @rpcPath = '/xmlrpc.php'
-@user = ''
-@pass = ''
+@user = 'rbuploader'
+@pass = 'La3Tf9Ac$'
 
 @filelist = []
+
+@dsync = Dbox.sync(@dbox_path)
 
 server = XMLRPC::Client.new(@host, @rpcPath)
 id = '1' #ライブラリに入れたい記事のPostId
 
+if @dsync[:pull][:created].size == 0
+  exit 0
+end
 
-Dir.glob(@dbox_dir) do |f|
+@dsync[:pull][:created].each { |f|
   if /.*?\.(jpe?g|JPE?G|png|PNG)$/ =~ f
     @filelist << f
   end
-end
+}
 
 @filelist.each do |file|
   fileName = File.basename(file)
@@ -33,9 +39,8 @@ end
     break
   end
 
-
   open(fileName, 'wb') do |f|
-    open(file) do |data|
+    open(@dbox_path + file) do |data|
       f.write(data.read)
     end
   end
