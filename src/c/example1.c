@@ -12,9 +12,10 @@ int gcd(int a, int b){
 
 int main(int argc, char *argv[]) {
   int i,j,k;
-  i = 1000;
-  j = 35;
-  k = gcd(i,j);
-  printf("G.C.D is %d.\n",k);
+  i = 432;
+  for (j = 12; j < 19; j++) {
+    k = gcd(i,j);
+    printf("G.C.D is %d.\n",k);
+  }
   exit(0);
 }
