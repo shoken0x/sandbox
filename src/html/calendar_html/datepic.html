@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+  <style type="text/css">
+  .ui-datepicker-date-exist .ui-state-default {
+    background-image : none;
+    background-color : #FFDD00;
+  }
+  </style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    $( "#calendar1" ).datepicker();
+
+    $( "#calendar2" ).datepicker({
+      beforeShowDay: function(date) {
+        var dateStr = createDateStr(date);
+        
+        if ($( "#dateList" ).val().indexOf(dateStr) != -1) {
+          return [true,"ui-datepicker-date-exist"];
+        }
+        else {
+          return [false];
+        }
+      }
+    });
+
+    $( "#calendar3" ).datepicker({
+      beforeShowDay: function(date) {
+        var now = new Date();
+        var dateStr = createDateStr(date);
+        
+        if (date.getTime() > now.getTime()) {
+          return [false];
+        }
+        else if ($( "#dateList" ).val().indexOf(dateStr) != -1) {
+          return [true,"ui-datepicker-date-exist"];
+        }
+        else {
+          return [true];
+        }
+      }
+    });
+  });
+  
+  function createDateStr(date) {
+    var year = date.getYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    if (year < 2000) { year += 1900 };
+    if (month < 10)  { month = "0" + month };
+    if (day < 10)    { day = "0" + day };
+    
+    var dateStr = year + "/" + month + "/" + day;
+    return dateStr;
+  }
+  </script>
+</head>
+<body>
+<h3>Taste of Tech Topick 〜DatePickerデモ〜</h3>
+<div>
+    <p>Date欄をクリックすると、カレンダーが現れます。</p>
+<table>
+  <tr>
+    <td>
+      Date（標準）:
+    </td>
+    <td>
+      <input type="text" id="calendar1">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Date（特定の日付のみハイライト＆選択可）:
+    </td>
+    <td>
+       <input type="text" id="calendar2">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Date（未来日は選択不可）: 
+    </td>
+    <td>
+      <input type="text" id="calendar3">
+    </td>
+  </tr>
+</table>
+
+<input type="hidden" id="dateList" value="2014/08/01,2014/08/24" />
+</div>
+</body>
+</html>

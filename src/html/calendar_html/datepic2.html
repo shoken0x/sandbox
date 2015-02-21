@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery UI DatePicker</title>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<style>
+.ui-highlight .ui-state-default{
+background: red !important;
+border-color: red !important;
+color: white !important;
+}
+</style>
+<script type="text/javascript" language="javascript">		
+  var menu1_dates = ['2014-09-28','2014-10-15','2014-10-25'];
+  var menu2_dates = ['2014-09-20','2014-09-21','2014-09-22'];
+  $(function(){
+    $('input[type=text]').datepicker({
+      minDate: "0",
+      maxDate: "+1m",
+      changeMonth : false,
+      changeYear : false,
+      beforeShowDay : function(date){
+        var y = date.getFullYear().toString(); // get full year
+        var m = (date.getMonth() + 1).toString(); // get month.
+        var d = date.getDate().toString(); // get Day
+        if(m.length == 1){ m = '0' + m; } // append zero(0) if single digit
+        if(d.length == 1){ d = '0' + d; } // append zero(0) if single digit
+        var currDate = y+'-'+m+'-'+d;
+        if( eval($(this).attr("id") ).indexOf(currDate) >= 0){
+          return [true, "ui-highlight"];	
+        }else{
+          return [true];
+        }
+      }
+    });
+  })
+</script>
+</head>
+<body>
+	<input type="text" placeholder="予約可能日を確認" id="menu1_dates"/>
+	<input type="text" placeholder="予約可能日を確認" id="menu2_dates"/>
+</body>
+</html>
