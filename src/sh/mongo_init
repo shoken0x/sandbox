@@ -1,0 +1,34 @@
+#!/bin/sh
+
+action="$1"
+
+VERSION="$2"
+if [ ! -n "$VERSION" ]; then
+  VERSION=""
+else
+  PREFIX="-"
+fi
+
+MONGODB="mongodb"$PREFIX$VERSION
+
+mongod_lock=/opt/$MONGODB/data/mongod.lock
+mongod=/opt/$MONGODB/bin/mongod
+mongod_conf=/opt/mongodb/conf/mongod$PREFIX$VERSION.conf
+PID=$mongod_lock
+
+
+sig () {
+  test -s "$PID" && kill `cat $PID`
+}
+
+case $action in
+start)
+  sig 0 && echo >&2 "Already running" && exit 0
+  echo -n $"Starting mongodb: "
+  $mongod -f $mongod_conf
+  ;;
+stop)
+  sig QUIT && exit 0
+  echo >&2 "Not running"
+  ;;
+esac
