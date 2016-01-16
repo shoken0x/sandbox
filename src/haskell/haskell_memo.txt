@@ -1,0 +1,257 @@
+なぜ関数定義で使えるのは:演算子だけなのか？
+:は特別。リストは1:2:3:[]と定義できる。データコンストラクタだから？
+関数定義の引数部分には、コンストラクタしか定義できない？
+
+なぜread 'j' :: Charでエラーが出るのか？:i Charで調べると、instance Read Charなのに。
+read "'j'" :: Charだとエラーが出ない。readの引数はStringなのでエラーになる。
+
+ドキュメント
+https://downloads.haskell.org/~ghc/7.8.4-rc1/docs/html/
+例えば、CharはLibrariesのData Module
+https://downloads.haskell.org/~ghc/7.8.4-rc1/docs/html/libraries/base-4.7.0.2/Data-Char.html
+
+Haskell Report
+98 日本語
+http://www.sampou.org/haskell/report-revised-j/index.html
+2010 一部日本語
+http://www.sampou.org/haskell/haskell2010-report-htja/
+
+関数がどのファイルに定義されているかはGHCiの:iで確認できる
+ghci> :i ==
+
+再帰には必ず終着点がある。(ただし、無限リストを返す関数はのぞく。)まず終着点(基底部)から考える。
+関数定義の関数名から先の左辺は引数定義なので、見慣れないものがあっても気にしない。右辺で使われるためのものなので、右辺に現れる。右辺に現れない場合は必要無いので_(ワイルドカード)でよい。
+
+関数の右辺で見慣れないものが出てきたら、
+  左辺に出てくる（引数）
+  組み込み関数
+  whereやletで束縛されているもの。
+のどれか。
+
+データコンストラクタはパターンマッチに使える特別な関数
+パターンマッチには値か構築子しか使えない。構築子以外の関数は使えない。
+data Hoge = H { getInt::Int }
+hoge :: Hoge -> String
+hoge (H _) = "hoge"
+
+(:)はリストの構築子, (,)はタプルの構築子
+
+
+式の型シグネチャは()のつけかたで理解しやすくなる
+http://www.sampou.org/haskell/report-revised-j/exps.html
+http://www.sampou.org/haskell/haskell2010-report-htja/haskellch3.html#x8-560003.16
+-> (アロー演算子)を型シグネチャに含むものはすべて関数。
+カリー化の理解に繋がる
+例として multThree :: Int -> Int -> Int -> Int を考えると、
+Int型の引数を3つとって、Int型を返す関数とも理解できるが、()を使うと
+multThree :: Int -> (Int -> (Int -> Int))
+と表現でき、これはInt型の引数を1つとって、(Int -> (Int -> Int))という型の関数を返す関数と表せる
+これがカリー化
+
+与えられた引数が文字列か数値かの判定はどうするの？と考えたが、型シグネチャがあるので
+引数の型は決められている。
+
+参考リンク
+おとうさん、ぼくにもYコンビネータがわかりましたよ！ - きしだのはてな
+http://d.hatena.ne.jp/nowokay/20090409#1239268405
+
+ラムダ計算の勉強のしかた、プログラム意味論 - きしだのはてな
+http://d.hatena.ne.jp/nowokay/20110926
+
+「圏論を学んで得られる事、得られない事」に対する補足 - Creatable a => a -> IO b
+http://tune.hateblo.jp/entry/2015/02/03/100920
+
+コマ大数学科の問題をRubyとScalaで解いてみる - ぱろっと・すたじお
+http://parrot.hatenadiary.jp/entry/20110302/1299051431
+
+圏論勉強会 @ ワークスアプリケーションズ
+http://nineties.github.io/category-seminar/
+
+磯野ー！関数型言語やろうぜー！
+http://www.slideshare.net/shizone/ss-9814924
+
+YuruhuwaHaskell/tutorial at master · tokiwoousaka/YuruhuwaHaskell
+https://github.com/tokiwoousaka/YuruhuwaHaskell/tree/master/tutorial
+
+M.Hiroi's Home Page / お気楽 Haskell プログラミング入門 (read "'j'" :: Char)
+http://www.geocities.jp/m_hiroi/func/haskell17.html
+
+M.Hiroi's Home Page / Haskell Progamming
+http://www.geocities.jp/m_hiroi/func/haskell.html
+
+Haskell 入門 - ウォークスルー Haskell
+http://walk.wgag.net/haskell/index.html
+
+Haskell の返り値の型を指定する関数 - maxBound, minBound, (=~), return | すぐに忘れる脳みそのためのメモ
+http://jutememo.blogspot.jp/2008/11/haskell.html
+
+Haskellの演算子について纏めてみた - 開発やプログラミングや家族や思考
+http://d.hatena.ne.jp/marony0607/20111205/1323103005
+
+Haskell の文法
+http://mew.org/~kazu/academic/2013/miyazaki-u/syntax.html
+
+すごいHaskellたのしく学ぼうでHaskellことはじめ2 - kk_Atakaの日記＠GitHub Pages
+http://gosyujin.github.io/2013/01/24/haskell-helloworld3/
+
+もしRubyistがHaskellを学んだら(12) リストを逆順にする -- ぺけみさお
+http://www.xmisao.com/2013/12/24/learning-haskell-12.html
+
+learning_haskellタグのエントリ一覧 -- ぺけみさお
+もしRubyistがHaskellを学んだら
+http://www.xmisao.com/tags/learning_haskell/
+
+yuwki0131-blog: Haskellのポイント・フリー記法とコンビネータで暗号入門
+http://uid0130.blogspot.jp/2014/11/haskell.html
+
+yuwki0131-blog: Haskellのフクロウ ((.)$(.))
+http://uid0130.blogspot.jp/2014/11/haskell_17.html
+
+プログラミングHaskellのfoldr, foldlの説明が秀逸だった件 - あと味
+http://taiju.hatenablog.com/entry/20130202/1359773888
+
+加減算の連続、たとえば a + b - c + d - e というような式は、左から順に (((a + b) - c) + d) - e という意味となる。このような結合を"左結合" (英: left-associative)、あるいは"左から右" (英: left to right) と言う。逆が"右結合"（英: right-associative)、あるいは"右から左" (英: right to left) である。右結合の例としては、C系の言語に特徴的な代入演算子 = は右結合である。a = b = 1; という式文における式は a = (b = 1) という意味であり b = 1 という代入演算子による式の値は 1 なので、それが a に(も)代入され、結果として a と b に 1 が代入される。
+
+Haskellでの関数定義 - south37のブログ
+http://south37.hatenablog.com/entry/2014/03/14/Haskell%E3%81%A7%E3%81%AE%E9%96%A2%E6%95%B0%E5%AE%9A%E7%BE%A9
+
+basic data types in Haskell
+https://www.shido.info/hs/haskell4.html
+
+Haskell のお勉強
+https://www.shido.info/hs/index.html
+
+型安全な言語
+型の食い違いによる「意味のない」「正しくない」操作を全て検出できる言語。例: Ruby や Java は実行時エラーがでるので型安全、C はキャストがあるので型安全でない。
+静的型付けな言語
+コンパイル時に全ての式、変数の型が決まるような言語。例： C, Java。
+動的型付けな言語
+プログラムを実行してからでないと決まらない式がある言語。例: Lisp, Ruby。
+強く型付けされた言語
+静的型付けのシステムにより、型エラーがおこる可能性をすべてコンパイル時に検出できる言語。例: キャストが存在しない ML や Haskell は強い型付け。Java はキャストによるエラーが実行時にしか分からないので弱い型付け。
+http://d.hatena.ne.jp/kwatch/20080228/1204204747
+
+Haskell のリストのデータコンストラクタによるパターンマッチ | すぐに忘れる脳みそのためのメモ
+http://jutememo.blogspot.jp/2008/10/haskell_30.html
+
+Haskell でデータコンストラクタによるパターンマッチ | すぐに忘れる脳みそのためのメモ
+http://jutememo.blogspot.jp/2009/06/haskell.html
+
+Haskell でデータコンストラクタを置き換える高階関数 - reduce について誤解していたこと | すぐに忘れる脳みそのためのメモ
+http://jutememo.blogspot.jp/2011/10/haskell-reduce.html
+
+なぜ関数プログラミングは重要か
+http://www.sampou.org/haskell/article/whyfp.html
+
+GHC 7.4.1 の型レベル新機能を使い倒す 〜GADTs、型族 と DataKinds、ConstraintKinds の円環〜 - konn-san.com
+http://konn-san.com/articles/2012-06-06-promoted-types-and-list-arguments.html
+
+konn-san.com 建設予定地 - 石井大海
+http://konn-san.com/
+
+Haskellのforallについて理解したことを書いておく(ランクN多相限定)。 - uehaj's blog
+http://uehaj.hatenablog.com/entry/2014/01/23/121923
+
+旧Blog記事保管庫 - konn-san.com
+http://konn-san.com/articles/
+
+Rustを30分で紹介する(訳) - uehaj's blog
+http://uehaj.hatenablog.com/entry/2014/04/20/175630
+
+HaskellのオレオレWebフレームワーク作ってる - Qiita
+http://qiita.com/philopon/items/99760c65bcc2d3fcc4c1
+
+Haskellの表記を楽にする6つのghc拡張 - Qiita
+http://qiita.com/philopon/items/b812e43128654245e42d
+
+HaskellでWebAppの開発に必要なN個のこと - maoeのブログ
+http://maoe.hatenadiary.jp/entry/2013/09/10/182914
+
+Wai + WarpでWebサーバを作る - yunomuのブログ
+http://yunomu.hatenablog.jp/entry/2012/07/20/163322
+
+HaskellでJSON Web APIを作ると幸せになれるかもよ - Fujimura
+http://blog.fujimuradaisuke.com/post/26887032662/haskell-de-json-web-api
+
+実は persistent のスキーマ定義で、テーブル名の横に json と書くだけで ToJSON, FromJSON が定義されることが判明 - ごったく
+http://d.hatena.ne.jp/thimura/20120708/1341762810
+
+できる！Template Haskell (完) - はてな使ったら負けだと思っている deriving Haskell - haskell
+http://haskell.g.hatena.ne.jp/mr_konn/20111218/1324220725
+
+Haskell で DB操作 - rfなブログ
+http://rf0444.hatenablog.jp/entry/20120430/1335778852
+
+「型」に関して ohai日誌(2005-05-17)
+http://mars.kmc.gr.jp/~ohai/d/?date=20050517#p02
+
+疑問
+Haskellで型を調べるには？:t以外で。
+引数がStringかIntかを判定する関数はどう書く？
+=> 純粋関数型で参照透過性保持のためリフレクションは持っていない。拡張でreflectionという
+Hackageがある。
+
+
+ 算機科学におけるモナド（Monads）とは、計算機科学者のEugenio Moggiによって提案されたモジュール性を持たせた表示的意味論の枠組みを言う。プログラムとはクライスリ圏の射である、という要請から合成規則としてクライスリトリプル(Kleisli triple)というモナドと等価なものが用いられる。
+モナドの名称は、圏論のモナド（モノイド＋トライアド）に基づいており、ライプニッツのモナド（単子論）とは無関係である。
+ http://www.slideshare.net/shizone/ss-9814924
+
+
+f:: TypeA -> TypeB
+fはTypeBを返すために、TypeA以外の情報を一切使わない関数
+http://www.slideshare.net/RuiccRail/haskell-day2012
+参照透過性とは、実装に制限を加えることにより、型の言及力を増加させている
+
+ラムダ計算 - Wikipedia
+https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%A0%E3%83%80%E8%A8%88%E7%AE%97
+
+チャーチ数とラムダ計算 - sirocco の書いてもすぐに忘れるメモ
+http://d.hatena.ne.jp/sirocco/20101028/1288214324
+
+ラムダ計算を理解したようです - (define -ayalog '())
+http://ayato.hateblo.jp/entry/20130320/1363750183
+
+「型」の定義に挑む | コンピュータサイエンス | POSTD
+http://postd.cc/against-the-definition-of-types/
+関数型プログラミング入門 | プログラミング | POSTD
+http://postd.cc/an-introduction-to-functional-programming/
+
+“型”を語る際の7つの重大な誤り | プログラミング | POSTD
+http://postd.cc/7-deadly-sins-of-talking-about-types/
+
+C++の設計と進化(D&E) レバレッジメモ 1 - 西尾泰和のはてなダイアリー
+http://d.hatena.ne.jp/nishiohirokazu/20101018/1287404332
+
+QAで学ぶMonad - あどけない話
+http://d.hatena.ne.jp/kazu-yamamoto/20110413/1302683869
+
+Haskellの文法(再帰編) - あどけない話
+http://d.hatena.ne.jp/kazu-yamamoto/20110829/1314584585
+
+Haskellの文法(分岐編) - あどけない話
+http://d.hatena.ne.jp/kazu-yamamoto/20110826/1314352340
+
+関数合成の妙技 - あどけない話
+http://d.hatena.ne.jp/kazu-yamamoto/20100702/1278036842
+
+いまSICPを読むのは時間の無駄 - きしだのはてな
+http://d.hatena.ne.jp/nowokay/20090321
+
+第7章 型や型クラスを自分で作ろう 前編 - Rejasupoem
+http://rejasupotaro.github.io/2014/01/19/30.html
+
+S式とconsセル
+http://www.stdio.h.kyoto-u.ac.jp/~hioki/gairon-enshuu/SchemeNotes/s-expression.html
+
+SICP関数型言語の勉強に「計算機プログラムの構造と解釈」を読もう - Higepon’s blog
+http://d.hatena.ne.jp/higepon/19700103/1145105233
+
+Haskellの関数合成、または (.) 関数 - Qiita
+http://qiita.com/etoilevi/items/abd6c0063eae11a43237
+
+Haskell で map のネスト | すぐに忘れる脳みそのためのメモ
+http://jutememo.blogspot.jp/2008/11/haskell-map.html
+
+xsはxの複数形とのこと
+Where does the name "xs" for pattern matching come from? - Stack Overflow
+http://stackoverflow.com/questions/13701099/where-does-the-name-xs-for-pattern-matching-come-from
