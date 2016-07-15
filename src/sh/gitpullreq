@@ -1,26 +1,26 @@
 #!/bin/sh
 ## for Mac OS X only
 ##
-## Usage 
+## Usage
 ##
-## hubpullreq "base branch"
-## ex. hubpullreq master
+## gitpullreq "base branch"
+## ex. gitpullreq master
 ## then open Github pull request page compare current branch and base branch by browser.
- 
+
 GITHUB="https://github.com"
 SAFARI="/Applications/Safari.app"
 CHROME="/Applications/Google Chrome.app/"
 FF="/Applications/Firefox.app"
- 
+
 # set your github repository
 REPOSITORY="kitchhike/kitchhike"
 # set your browser
 BROWSER=$SAFARI
- 
+
 BASE=$1
 if [ ! -n "$BASE" ]; then
   BASE="develop"
 fi
 CURRENT=`git symbolic-ref --short HEAD`
- 
+
 open -a "$BROWSER" $GITHUB/$REPOSITORY/compare/$BASE...$CURRENT
