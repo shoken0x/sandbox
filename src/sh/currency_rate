@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "`curl -sS http://api.aoikujira.com/kawase/json/usd | jq '.JPY' | sed 's/\"//'| sed -e 's/....$//'`"

@@ -15,7 +15,7 @@ FF="/Applications/Firefox.app"
 # set your github repository
 REPOSITORY="kitchhike/kitchhike"
 # set your browser
-BROWSER=$SAFARI
+BROWSER=$CHROME
 
 BASE=$1
 if [ ! -n "$BASE" ]; then
