@@ -2,10 +2,13 @@
 ## for Mac OS X only
 ##
 ## Usage
+## gitpullreq
+##   Open GitHub pull request page compare current branch and develop.
+##   You need to have branch name "develop".
 ##
 ## gitpullreq "base branch"
-## ex. gitpullreq master
-## then open Github pull request page compare current branch and base branch by browser.
+##   ex. gitpullreq master
+##   then open GitHub pull request page compare current branch and base branch by browser.
 
 GITHUB="https://github.com"
 SAFARI="/Applications/Safari.app"
