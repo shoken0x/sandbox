@@ -1,0 +1,3 @@
+.gh-header-meta .commit-ref:first-of-type:not([title*='master']) {
+    background: #dbab09;
+}
