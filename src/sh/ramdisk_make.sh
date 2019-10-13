@@ -2,7 +2,7 @@
 # for Ramdisk
 
 # 20480=10MB 204800=100MB
-NUMSECTORS=1024000
+NUMSECTORS=2048000
 
 #dive name
 DEVNAME=ramdisk
@@ -11,14 +11,14 @@ DEVNAME=ramdisk
 MYDEV=`hdid -nomount ram://$NUMSECTORS`
 
 # format as HFS+
-diskutil eraseDisk HFS+ $DEVNAME $MYDEV
+diskutil eraseDisk HFS+ $DEVNAME `echo $MYDEV`
 
 # for Safari
-mkdir /Volumes/$DEVNAME/com.apple.Safari
-#rm -f ~/Library/Caches/com.apple.Safari/Cache.db
-#ln -s /Volumes/$DEVNAME/com.apple.Safari ~/Library/Caches/com.apple.Safari
+mkdir -p /Volumes/$DEVNAME/com.apple.Safari
+rm -rf `echo $TMPDIR`com.apple.Safari
+ln -s /Volumes/$DEVNAME/com.apple.Safari $TMPDIR
 
 # for Chrome
 mkdir -p /Volumes/$DEVNAME/ChromeCache/Default
-#rm -rf ~/Library/Caches/Google/Chrome/Default
-#ln -s /Volumes/$DEVNAME/ChromeCache/Default ~/Library/Caches/Google/Chrome/Default
+rm -rf ~/Library/Caches/Google/Chrome/Default
+ln -s /Volumes/$DEVNAME/ChromeCache/Default ~/Library/Caches/Google/Chrome/
